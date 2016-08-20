@@ -9,7 +9,13 @@
   border: 1px solid grey;
   padding: 5px;
 }
-
+.App_Section {
+  padding: 5px 0;
+}
+.App_Result {
+  color: #008000;
+  font-size: 2em;
+}
 input[type='text'] {
   font-size: 1em;
   width: 100%;

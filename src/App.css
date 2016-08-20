@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box
+}
+.App {
+  font-size: 1em;
+  padding: 10px;
+}
+.App_Input {
+  border: 1px solid grey;
+  padding: 5px;
+}
+
+input[type='text'] {
+  font-size: 1em;
+  width: 100%;
+}

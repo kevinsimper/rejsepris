@@ -4,6 +4,8 @@
 .App {
   font-size: 1em;
   padding: 10px;
+  max-width: 500px;
+  margin: 0 auto;
 }
 .App_Header {
   font-weight: bold;

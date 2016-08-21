@@ -14,11 +14,12 @@ class App extends Component {
     this.state = {
       from: '',
       to: '',
-      rejsekort: REJSEKORT_PREFIX,
+      rejsekort: localStorage.rejsekort || REJSEKORT_PREFIX,
       rejsekortData: {},
       price: '',
       time: now.getHours() + ':' + ('0' + now.getMinutes()).slice(-2),
-      date: `${now.getFullYear()}-${('0' + (now.getMonth() + 1)).slice(-2)}-${now.getDate()}`
+      date: `${now.getFullYear()}-${('0' + (now.getMonth() + 1)).slice(-2)}-${now.getDate()}`,
+      remember: (localStorage.rejsekort && localStorage.rejsekort.length > 0) ? true : false
     }
   }
   componentDidMount() {
@@ -44,6 +45,17 @@ class App extends Component {
     this.setState({
       time: e.target.value
     })
+  }
+  onChangeRemember() {
+    let current = !this.state.remember
+    this.setState({
+      remember: current
+    })
+    if(current) {
+      localStorage.rejsekort = this.state.rejsekort
+    } else {
+      localStorage.rejsekort = ''
+    }
   }
   fetchStartStops(input, callback) {
     let callbackFn = 'getStopAPI'
@@ -131,7 +143,7 @@ class App extends Component {
         <div className='App_Form'>
           <div className='App_Section'>
             <div className='App_Header'>Fra</div>
-            <div>
+            <div className='App_Input_Container'>
               <Select.Async
                 value={this.state.from.value}
                 loadOptions={this.fetchStartStops}
@@ -146,7 +158,7 @@ class App extends Component {
           </div>
           <div className='App_Section'>
             <div className='App_Header'>Til</div>
-            <div>
+            <div className='App_Input_Container'>
               <Select.Async
                 value={this.state.to.value}
                 loadOptions={this.fetchEndStops}
@@ -161,20 +173,23 @@ class App extends Component {
           </div>
           <div>
             <div className='App_Header'>Dato</div>
-            <div>
+            <div className='App_Input_Container'>
               <input type='date' className='App_Input' value={this.state.date} onChange={this.onChangeDate.bind(this)}/>
             </div>
           </div>
           <div>
             <div className='App_Header'>Tid</div>
-            <div>
+            <div className='App_Input_Container'>
               <input type='time' className='App_Input' value={this.state.time} onChange={this.onChangeTime.bind(this)}/>
             </div>
           </div>
           <div className='App_Section'>
             <div className='App_Header'>Rejsekort Nummer</div>
-            <div>
+            <div className='App_Input_Container'>
               <input type='number' className='App_Input' value={this.state.rejsekort} onChange={this.onChangeRejsekort.bind(this)}/>
+            </div>
+            <div className='App_Input_Container'>
+              <input type="checkbox" checked={this.state.remember} onChange={this.onChangeRemember.bind(this)}/> Husk mit rejsekort!
             </div>
           </div>
           <button onClick={this.calculatePrice.bind(this)} className='App_Calculate'>Beregn</button>

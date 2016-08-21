@@ -17,6 +17,9 @@
   font-size: 1em;
   width: 100%;
 }
+.App_Input_Container {
+  padding: 3px 0;
+}
 .App_Section {
   padding: 5px 0;
 }

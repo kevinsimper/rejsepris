@@ -5,9 +5,17 @@
   font-size: 1em;
   padding: 10px;
 }
+.App_Header {
+  font-weight: bold;
+  padding: 0 5px;
+}
 .App_Input {
-  border: 1px solid grey;
+  border-color: #d9d9d9 #ccc #b3b3b3;
+  border-radius: 4px;
+  border: 1px solid #ccc;
   padding: 5px;
+  font-size: 1em;
+  width: 100%;
 }
 .App_Section {
   padding: 5px 0;

@@ -177,7 +177,7 @@ class App extends Component {
               <input type='number' className='App_Input' value={this.state.rejsekort} onChange={this.onChangeRejsekort.bind(this)}/>
             </div>
           </div>
-          <button onClick={this.calculatePrice.bind(this)}>Calculate</button>
+          <button onClick={this.calculatePrice.bind(this)} className='App_Calculate'>Beregn</button>
         </div>
         <div className='App_Result'>
           {this.state.price}
